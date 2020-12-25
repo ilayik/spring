@@ -83,11 +83,6 @@ public class PeopleDAO {
 
     public void savePerson(Person person){
         try {
-//            Statement statement = connection.createStatement();
-//            String SQL = "INSERT INTO Person VALUES(" + 1 + ",'" + person.getName() +
-//                    "'," + person.getAge() + ",'" + person.getEmail() + "')";
-
-//            statement.executeUpdate(SQL);
             PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO Person VALUES(1,?,?,?)");
             preparedStatement.setString(1,person.getName());
@@ -101,11 +96,6 @@ public class PeopleDAO {
     }
 
     public void updatePerson(int id, Person updatedPerson){
-//        Person personToBeUptated = getPerson(id);
-//
-//        personToBeUptated.setName(updatedPerson.getName());
-//        personToBeUptated.setAge(updatedPerson.getAge());
-//        personToBeUptated.setEmail(updatedPerson.getEmail());
         try {
         PreparedStatement preparedStatement =
                 connection.prepareStatement("UPDATE Person SET name=?, age=?, email=? WHERE id=?");
@@ -124,7 +114,6 @@ public class PeopleDAO {
     }
 
     public void deletePerson(int id) {
-//        people.removeIf(p -> p.getId() == id);
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("DELETE FROM Person WHERE id=?");
